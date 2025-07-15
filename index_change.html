@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>特别的告白</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义颜色和字体 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            love: {
+              50: '#fff1f3',
+              100: '#ffe4e7',
+              200: '#ffccd5',
+              300: '#ffb3c1',
+              400: '#ff8a9f',
+              500: '#ff617d',
+              600: '#ff385c',
+              700: '#e61e44',
+              800: '#c41230',
+              900: '#a00a22',
+            },
+            magic: {
+              purple: '#8A2BE2',
+              pink: '#FF69B4',
+              blue: '#1E90FF',
+              gold: '#FFD700',
+              teal: '#00CED1',
+            }
+          },
+          fontFamily: {
+            romantic: ['"Dancing Script"', 'cursive', 'sans-serif'],
+            main: ['"Nunito"', 'sans-serif']
+          },
+        },
+      }
+    }
+  </script>
+  
+  <!-- 自定义工具类和动画 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .text-shadow-lg {
+        text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+      }
+      .animate-sparkle {
+        animation: sparkle 2s ease-in-out infinite;
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-float-delay-1 {
+        animation: float 6s ease-in-out 1s infinite;
+      }
+      .animate-float-delay-2 {
+        animation: float 6s ease-in-out 2s infinite;
+      }
+      .animate-pulse-slow {
+        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      .animate-appear {
+        animation: appear 1.5s ease-out forwards;
+      }
+      .animate-flower {
+        animation: flower 8s ease-out forwards;
+      }
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { 
+        opacity: 1; 
+        text-shadow: 0 0 10px rgba(255,255,255,0.8), 
+                     0 0 20px rgba(255,255,255,0.6),
+                     0 0 30px rgba(255,215,0,0.5);
+      }
+      50% { 
+        opacity: 0.7; 
+        text-shadow: 0 0 5px rgba(255,255,255,0.5), 
+                     0 0 10px rgba(255,255,255,0.3),
+                     0 0 15px rgba(255,215,0,0.2);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes appear {
+      0% { 
+        opacity: 0; 
+        transform: translateY(20px);
+        filter: blur(10px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+    
+    @keyframes flower {
+      0% { 
+        transform: scale(0.1);
+        opacity: 0;
+      }
+      60% { 
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+      100% { 
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+  </style>
+  
+  <!-- 引入Google字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-magic-purple via-love-700 to-magic-blue font-main overflow-hidden relative">
+  <!-- 背景装饰元素 -->
+  <div class="absolute inset-0 overflow-hidden">
+    <!-- 流动的粒子背景 -->
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiB0cmFuc2Zvcm09InJvdGF0ZSg0NSkiLz48L3BhdHRlcm4+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIgb3BhY2l0eT0iMC4zIi8+PC9zdmc+')] opacity-40"></div>
+    
+    <!-- 浪漫的浮动爱心 -->
+    <div class="absolute top-1/4 left-1/5 text-love-300 opacity-40 animate-float">
+      <i class="fa fa-heart text-[clamp(2rem,5vw,3.5rem)]"></i>
+    </div>
+    <div class="absolute top-1/3 right-1/4 text-love-200 opacity-30 animate-float-delay-1">
+      <i class="fa fa-heart text-[clamp(1.5rem,4vw,3rem)]"></i>
+    </div>
+    <div class="absolute bottom-1/4 left-1/3 text-love-300 opacity-30 animate-float-delay-2">
+      <i class="fa fa-heart text-[clamp(1.8rem,4.5vw,3.2rem)]"></i>
+    </div>
+    <div class="absolute bottom-1/3 right-1/5 text-love-200 opacity-40 animate-float">
+      <i class="fa fa-heart text-[clamp(1.6rem,4vw,3rem)]"></i>
+    </div>
+    
+    <!-- 花朵装饰 -->
+    <div class="absolute bottom-10 left-10 w-24 h-24 opacity-0 animate-flower" style="animation-delay: 1s">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="15" fill="#FFD700" />
+        <path d="M50,10 Q80,20 50,30 Q20,20 50,10" fill="#FF69B4" />
+        <path d="M50,10 Q70,40 50,60 Q30,40 50,10" fill="#FF69B4" />
+        <path d="M50,90 Q80,80 50,70 Q20,80 50,90" fill="#FF69B4" />
+        <path d="M50,90 Q70,60 50,40 Q30,60 50,90" fill="#FF69B4" />
+        <path d="M10,50 Q20,80 30,50 Q20,20 10,50" fill="#FF69B4" />
+        <path d="M10,50 Q40,70 60,50 Q40,30 10,50" fill="#FF69B4" />
+        <path d="M90,50 Q80,80 70,50 Q80,20 90,50" fill="#FF69B4" />
+        <path d="M90,50 Q60,70 40,50 Q60,30 90,50" fill="#FF69B4" />
+      </svg>
+    </div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 opacity-0 animate-flower" style="animation-delay: 2s">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="18" fill="#FFD700" />
+        <path d="M50,10 Q80,20 50,30 Q20,20 50,10" fill="#8A2BE2" />
+        <path d="M50,10 Q70,40 50,60 Q30,40 50,10" fill="#8A2BE2" />
+        <path d="M50,90 Q80,80 50,70 Q20,80 50,90" fill="#8A2BE2" />
+        <path d="M50,90 Q70,60 50,40 Q30,60 50,90" fill="#8A2BE2" />
+        <path d="M10,50 Q20,80 30,50 Q20,20 10,50" fill="#8A2BE2" />
+        <path d="M10,50 Q40,70 60,50 Q40,30 10,50" fill="#8A2BE2" />
+        <path d="M90,50 Q80,80 70,50 Q80,20 90,50" fill="#8A2BE2" />
+        <path d="M90,50 Q60,70 40,50 Q60,30 90,50" fill="#8A2BE2" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- 主内容容器 -->
+  <div class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-12 text-white">
+    <!-- 标题 -->
+    <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-romantic font-bold text-shadow-lg mb-8 opacity-0 animate-appear" style="animation-delay: 0.5s">
+      亲爱的
+    </h1>
+    
+    <!-- 装饰分隔线 -->
+    <div class="flex items-center my-6 w-48 opacity-0 animate-appear" style="animation-delay: 1.2s">
+      <div class="flex-grow h-px bg-white/50"></div>
+      <div class="mx-3 text-white/70">
+        <i class="fa fa-heart animate-sparkle"></i>
+      </div>
+      <div class="flex-grow h-px bg-white/50"></div>
+    </div>
+    
+    <!-- 告白内容 -->
+    <div class="max-w-2xl text-center space-y-8">
+      <p class="text-[clamp(1.5rem,4vw,2.2rem)] font-romantic opacity-0 animate-appear animate-sparkle" style="animation-delay: 1.8s">
+        今天是520情人节
+      </p>
+      <p class="text-[clamp(1.8rem,5vw,2.5rem)] font-romantic text-yellow-200 opacity-0 animate-appear animate-sparkle" style="animation-delay: 2.5s">
+        我想对你说
+      </p>
+      <p class="text-[clamp(2rem,6vw,3rem)] font-romantic font-bold text-white opacity-0 animate-appear animate-sparkle" style="animation-delay: 3.2s">
+        "往后余生，风雪是你"
+      </p>
+    </div>
+    
+    <!-- 按钮：触发更多烟花 -->
+    <button id="fireworksBtn" class="mt-12 px-8 py-3 bg-white/20 backdrop-blur-sm rounded-full text-white font-semibold text-lg hover:bg-white/30 transform hover:scale-105 transition-all duration-300 flex items-center gap-2 group opacity-0 animate-appear" style="animation-delay: 4s">
+      <span>点击绽放更多烟花</span>
+      <i class="fa fa-magic transform group-hover:rotate-12 transition-transform duration-300"></i>
+    </button>
+    
+    <!-- 页脚 -->
+    <div class="mt-auto pt-12 text-white/60 text-sm">
+      <p>用❤️制作的告白</p>
+    </div>
+  </div>
+
+  <!-- 烟花容器 -->
+  <div id="fireworksContainer" class="fixed inset-0 pointer-events-none z-20"></div>
+
+  <script>
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', () => {
+      // 自动播放一次烟花 - 等待所有文字动画完成
+      setTimeout(createFireworks, 5000);
+      
+      // 按钮点击触发烟花
+      document.getElementById('fireworksBtn').addEventListener('click', createFireworks);
+    });
+    
+    // 烟花效果实现 - 增强版，更大更绚丽
+    function createFireworks() {
+      const container = document.getElementById('fireworksContainer');
+      const fireworksCount = 8 + Math.floor(Math.random() * 5); // 8-12个烟花
+      
+      // 定义更丰富的颜色范围
+      const colors = [
+        'hsl(330, 100%, 65%)', // 粉色
+        'hsl(270, 100%, 70%)', // 紫色
+        'hsl(210, 100%, 70%)', // 蓝色
+        'hsl(60, 100%, 75%)',  // 黄色
+        'hsl(180, 100%, 70%)', // 青色
+        'hsl(30, 100%, 75%)',  // 橙色
+      ];
+      
+      // 创建多个烟花
+      for (let i = 0; i < fireworksCount; i++) {
+        setTimeout(() => {
+          const firework = document.createElement('div');
+          
+          // 随机位置
+          const startX = Math.random() * 100;
+          const startY = 100;
+          const endX = 20 + Math.random() * 60; // 更宽的水平分布
+          const endY = 15 + Math.random() * 40; // 更高的垂直分布
+          
+          // 随机颜色
+          const hue = Math.floor(Math.random() * 360);
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          
+          // 设置烟花初始样式
+          firework.style.cssText = `
+            position: absolute;
+            width: 4px;
+            height: 25px;
+            background: linear-gradient(to top, transparent, ${color});
+            bottom: 0;
+            left: ${startX}%;
+            transform-origin: bottom center;
+            z-index: 10;
+          `;
+          
+          container.appendChild(firework);
+          
+          // 发射动画
+          setTimeout(() => {
+            firework.style.transition = 'all 1.2s cubic-bezier(0.25, 1, 0.5, 1)';
+            firework.style.bottom = `${endY}%`;
+            firework.style.left = `${endX}%`;
+            firework.style.height = '5px';
+            
+            // 爆炸效果
+            setTimeout(() => {
+              // 移除发射的烟花
+              firework.remove();
+              
+              // 创建更大更绚丽的爆炸效果
+              createExplosion(endX, endY, hue);
+            }, 1200);
+          }, 10);
+        }, i * 600); // 每个烟花间隔发射
+      }
+    }
+    
+    // 创建烟花爆炸效果 - 增强版
+    function createExplosion(x, y, hue) {
+      const container = document.getElementById('fireworksContainer');
+      const particlesCount = 150 + Math.floor(Math.random() * 100); // 150-250个粒子
+      
+      // 定义更丰富的颜色范围
+      const colors = [
+        `hsl(${hue}, 100%, 70%)`,
+        `hsl(${(hue + 30) % 360}, 100%, 70%)`,
+        `hsl(${(hue + 60) % 360}, 100%, 70%)`,
+        `hsl(${(hue + 90) % 360}, 100%, 70%)`,
+        `hsl(${(hue + 120) % 360}, 100%, 70%)`,
+        `hsl(${(hue + 150) % 360}, 100%, 70%)`,
+      ];
+      
+      for (let i = 0; i < particlesCount; i++) {
+        const particle = document.createElement('div');
+        
+        // 随机粒子属性
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 3 + Math.random() * 10; // 更大的速度范围
+        const distance = 50 + Math.random() * 100; // 更大的爆炸半径
+        const size = 2 + Math.random() * 4; // 更大的粒子尺寸
+        const opacity = 0.9 + Math.random() * 0.1;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        // 计算终点位置
+        const endX = Math.cos(angle) * distance;
+        const endY = Math.sin(angle) * distance;
+        
+        // 设置粒子初始样式
+        particle.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          background: ${color};
+          border-radius: 50%;
+          left: ${x}%;
+          top: ${y}%;
+          opacity: ${opacity};
+          transform: translate(-50%, -50%);
+          box-shadow: 0 0 ${8 + Math.random() * 12}px ${color};
+          z-index: 15;
+        `;
+        
+        container.appendChild(particle);
+        
+        // 粒子动画
+        setTimeout(() => {
+          particle.style.transition = `all ${1.5 + Math.random() * 1.5}s cubic-bezier(0.1, 0.8, 0.2, 1)`;
+          particle.style.transform = `translate(calc(-50% + ${endX}px), calc(-50% + ${endY}px))`;
+          particle.style.opacity = '0';
+          
+          // 动画结束后移除粒子
+          setTimeout(() => {
+            particle.remove();
+          }, 2500 + Math.random() * 1000);
+        }, 10);
+      }
+      
+      // 添加二次爆炸效果，使烟花更绚丽
+      setTimeout(() => {
+        for (let i = 0; i < particlesCount / 2; i++) {
+          const particle = document.createElement('div');
+          
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 2 + Math.random() * 6;
+          const distance = 30 + Math.random() * 70;
+          const size = 1 + Math.random() * 3;
+          const opacity = 0.8 + Math.random() * 0.2;
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          
+          const endX = Math.cos(angle) * distance;
+          const endY = Math.sin(angle) * distance;
+          
+          particle.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: ${color};
+            border-radius: 50%;
+            left: ${x}%;
+            top: ${y}%;
+            opacity: ${opacity};
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 ${5 + Math.random() * 10}px ${color};
+            z-index: 15;
+          `;
+          
+          container.appendChild(particle);
+          
+          setTimeout(() => {
+            particle.style.transition = `all ${1 + Math.random() * 1}s ease-out`;
+            particle.style.transform = `translate(calc(-50% + ${endX}px), calc(-50% + ${endY}px))`;
+            particle.style.opacity = '0';
+            
+            setTimeout(() => {
+              particle.remove();
+            }, 1500 + Math.random() * 800);
+          }, 10);
+        }
+      }, 300);
+    }
+  </script>
+</body>
+</html>
